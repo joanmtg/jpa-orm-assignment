@@ -30,12 +30,8 @@ public class VentanaInformacionPersonal extends javax.swing.JFrame {
         lTipoDocumento.setText("Tipo de Documento: " + persona.getTpDocumento().getTpCodigo());
         lNoDocumento.setText("No. Documento: " + persona.getIdentificacionPersonal());
         
-        
     }
     
-    public void funcionPrueba(){
-        //No tocar
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
