@@ -5,22 +5,56 @@
  */
 package GUI;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.util.*;
+import javax.persistence.*;
+import javax.swing.table.DefaultTableModel;
+import pruebajpa.*;
 
 /**
  *
  * @author invitado
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaGestionPersonal extends javax.swing.JFrame {
 
     /**
-     * Creates new form VentanaPrincipal
+     * Creates new form VentanaGestionPersonal
      */
-    public VentanaPrincipal() {
+    public VentanaGestionPersonal() {
         super("Gestión de Personal");
         initComponents();
         
         setLocationRelativeTo(null);
+        
+        llenarTablaPersonal();
+    }
+    
+    public void llenarTablaPersonal(){        
+        
+        DefaultTableModel modelo = (DefaultTableModel)tablaPersonal.getModel();
+        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaJPAPU");
+        PersonalJpaController dao = new PersonalJpaController(emf);
+        
+        List<Personal> personal = dao.findPersonalEntities();
+        Personal persona;       
+        
+        
+        for (int i = 0; i < personal.size(); i++) {
+            persona = personal.get(i); 
+            
+            Object[] fila = new Object[4];
+            fila[0] = persona.getIdentificacionPersonal();
+            fila[1] = persona.getNombre();
+            fila[2] = persona.getApellido();
+            fila[3] = persona.getTpDocumento().getTpCodigo();
+            
+            modelo.addRow(fila);            
+        }
+        
+        tablaPersonal.setModel(modelo);
+        emf.close();
+        
     }
 
     /**
@@ -80,10 +114,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tablaPersonal.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         tablaPersonal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Identificación", "Nombre", "Apellido", "Tipo Doc."
@@ -138,7 +169,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(panelGestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,60 +182,58 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegistrarActionPerformed
-        
+
         VentanaRegistroModificacionPersonal ventanaRegistro = new VentanaRegistroModificacionPersonal(this, "Registro");
         ventanaRegistro.setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_bRegistrarActionPerformed
 
     private void bModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarActionPerformed
-        
+
         VentanaRegistroModificacionPersonal ventanaModificacion = new VentanaRegistroModificacionPersonal(this, "Modificación");
         ventanaModificacion.setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_bModificarActionPerformed
 
     private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
-        
-        int filaSeleccionada = tablaPersonal.getSelectedRow();  
-        
+
+        int filaSeleccionada = tablaPersonal.getSelectedRow();
+
         if(filaSeleccionada != -1){
-            
+
             String idSeleccionado = (String)tablaPersonal.getModel().getValueAt(filaSeleccionada, 0);
-            
+
             int opcion = JOptionPane.showConfirmDialog(null, "Se eliminará la persona con identificación No. " + idSeleccionado);
-            
+
             if(opcion == JOptionPane.YES_OPTION){
                 JOptionPane.showMessageDialog(null, "Persona con identificación No. " + idSeleccionado + " eliminada", "Eliminación realizada", JOptionPane.INFORMATION_MESSAGE);
-            }            
-            
-        }                
-           
+            }
+
+        }
+
     }//GEN-LAST:event_bEliminarActionPerformed
 
     private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
-        
+
         VentanaBusquedaPersonal ventanaBusqueda = new VentanaBusquedaPersonal(this);
         ventanaBusqueda.setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_bConsultarActionPerformed
 
     /**
@@ -224,20 +253,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaGestionPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaGestionPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaGestionPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaGestionPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
+                new VentanaGestionPersonal().setVisible(true);
             }
         });
     }
