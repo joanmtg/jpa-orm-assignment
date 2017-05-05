@@ -5,7 +5,16 @@
  */
 package GUI;
 
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.*;
+import pruebajpa.Personal;
+import pruebajpa.PersonalJpaController;
+import pruebajpa.TipoDocumento;
+import pruebajpa.TipoDocumentoJpaController;
 
 /**
  *
@@ -18,14 +27,15 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
      */
     JFrame ventanaAnterior;
     String operacion;
-    
+
     public VentanaRegistroModificacionPersonal(JFrame anterior, String operacion) {
         super(operacion + " de personal");
         initComponents();
-        
+
         this.ventanaAnterior = anterior;
         this.operacion = operacion;
         setLocationRelativeTo(null);
+        llenarCBTipoDoc();
         
     }
 
@@ -69,7 +79,7 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
         tfApellido.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
 
         cbTipoDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
-        cbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "C.C", "T.I" }));
+        cbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
 
         jLabel4.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         jLabel4.setText("No. Documento:");
@@ -78,6 +88,11 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
 
         bAceptar.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         bAtras.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         bAtras.setText("Atrás");
@@ -106,7 +121,7 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelIngresoLayout.createSequentialGroup()
                             .addGap(72, 72, 72)
                             .addComponent(bAtras)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                             .addComponent(bAceptar))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelIngresoLayout.createSequentialGroup()
                             .addGroup(panelIngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,17 +191,70 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAtrasActionPerformed
-        
+
         int opcion = JOptionPane.showConfirmDialog(null, "¿Desea cancelar la operación actual?");
-            
-        if(opcion == JOptionPane.YES_OPTION){
+
+        if (opcion == JOptionPane.YES_OPTION) {
             this.dispose();
             ventanaAnterior.setVisible(true);
         }
-                
-                
+
+
     }//GEN-LAST:event_bAtrasActionPerformed
 
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        // TODO add your handling code here:
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaJPAPU");//PruebaJPAPU es el nombre de nuestra unidad de persistencia
+        PersonalJpaController dao = new PersonalJpaController(emf);//Creamos un controlador de personal
+        TipoDocumentoJpaController tpdoc = new TipoDocumentoJpaController(emf);//Debido a que Tipo documento es una Foreing Key en Personal, debemos instanciar un controlador
+        //de tipo TipoDocumento
+
+        if (tfNombre.getText().equals("") || tfApellido.getText().equals("") || tfNumDoc.getText().equals("")) {
+            
+            JOptionPane.showMessageDialog(null, "No deje campos vacíos");
+            
+        } else {
+            
+            String nombre = tfNombre.getText();
+            String apellido = tfApellido.getText();
+            String NoId = tfNumDoc.getText();
+            int opcion = cbTipoDoc.getSelectedIndex();
+            String tipoId;
+            if (opcion != 0) {
+                tipoId = cbTipoDoc.getSelectedItem().toString();
+                Personal persona = new Personal();
+                persona.setNombre(nombre);
+                persona.setApellido(apellido);
+                persona.setIdentificacionPersonal(tfNumDoc.getText());
+                persona.setTpDocumento(tpdoc.findTipoDocumento(opcion));//Buscamos el tipo documento con primary key = 1 (C.C.) y se lo pasamos al objeto personal
+                try {
+                    dao.create(persona);
+                    JOptionPane.showMessageDialog(null, "Registro exitoso");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Ya existe esta persona");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un tipo de documento");
+            }
+            
+        }
+
+
+    }//GEN-LAST:event_bAceptarActionPerformed
+
+    public void llenarCBTipoDoc(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaJPAPU");//PruebaJPAPU es el nombre de nuestra unidad de persistencia
+        TipoDocumentoJpaController tpdoc = new TipoDocumentoJpaController(emf);//Debido a que Tipo documento es una Foreing Key en Personal, debemos instanciar un controlador
+        //de tipo TipoDocumento
+        
+        List<TipoDocumento> tiposDeDocumentos = tpdoc.findTipoDocumentoEntities();
+        for(int i = 0; i<tiposDeDocumentos.size(); i++){
+            cbTipoDoc.addItem(tiposDeDocumentos.get(i).getTpCodigo().toString());
+        }
+        
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
