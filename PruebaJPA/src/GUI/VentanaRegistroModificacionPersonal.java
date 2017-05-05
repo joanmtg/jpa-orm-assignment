@@ -53,25 +53,25 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelIngreso.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Gestión de Personal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DejaVu Sans Mono", 2, 12))); // NOI18N
+        panelIngreso.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Ingrese los datos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DejaVu Sans Mono", 2, 12))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         jLabel1.setText("Nombre:");
 
-        jLabel2.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         jLabel2.setText("Apellido:");
 
-        jLabel3.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         jLabel3.setText("Tipo de documento:");
 
         tfNombre.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
 
         tfApellido.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
 
-        cbTipoDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        cbTipoDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         cbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "C.C", "T.I" }));
 
-        jLabel4.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         jLabel4.setText("No. Documento:");
 
         tfNumDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N

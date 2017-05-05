@@ -77,6 +77,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        tablaPersonal.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         tablaPersonal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

@@ -38,7 +38,7 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         panelInterno = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lNumDoc = new javax.swing.JLabel();
         tfNumeroDoc = new javax.swing.JTextField();
         bConsultar = new javax.swing.JButton();
         bAtras = new javax.swing.JButton();
@@ -47,8 +47,8 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
 
         panelInterno.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Búsqueda de Personal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DejaVu Sans Mono", 2, 12))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
-        jLabel1.setText("Número de Documento:");
+        lNumDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        lNumDoc.setText("Número de Documento:");
 
         bConsultar.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         bConsultar.setText("Consultar");
@@ -69,7 +69,7 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
                 .addGroup(panelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelInternoLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel1))
+                        .addComponent(lNumDoc))
                     .addGroup(panelInternoLayout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(bAtras)))
@@ -84,7 +84,7 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
             .addGroup(panelInternoLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(panelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lNumDoc)
                     .addComponent(tfNumeroDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(panelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,8 +171,8 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAtras;
     private javax.swing.JButton bConsultar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lNumDoc;
     private javax.swing.JPanel panelInterno;
     private javax.swing.JTextField tfNumeroDoc;
     // End of variables declaration//GEN-END:variables
