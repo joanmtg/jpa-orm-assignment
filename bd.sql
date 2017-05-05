@@ -1,3 +1,5 @@
+DROP TABLE personal, tipo_documento CASCADE;
+
 create table tipo_documento(
 tp_id_documento SERIAL primary key,
 tp_codigo varchar(20),
