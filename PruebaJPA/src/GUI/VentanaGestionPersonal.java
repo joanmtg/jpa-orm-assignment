@@ -10,6 +10,7 @@ import java.util.*;
 import javax.persistence.*;
 import javax.swing.table.DefaultTableModel;
 import pruebajpa.*;
+import pruebajpa.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -32,6 +33,7 @@ public class VentanaGestionPersonal extends javax.swing.JFrame {
     public void llenarTablaPersonal(){        
         
         DefaultTableModel modelo = (DefaultTableModel)tablaPersonal.getModel();
+        modelo.setRowCount(0);
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaJPAPU");
         PersonalJpaController dao = new PersonalJpaController(emf);
@@ -196,7 +198,7 @@ public class VentanaGestionPersonal extends javax.swing.JFrame {
 
     private void bRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegistrarActionPerformed
 
-        VentanaRegistroModificacionPersonal ventanaRegistro = new VentanaRegistroModificacionPersonal(this, "Registro");
+        VentanaRegistroModificacionPersonal ventanaRegistro = new VentanaRegistroModificacionPersonal(this, "Registro", null);
         ventanaRegistro.setVisible(true);
         this.setVisible(false);
 
@@ -204,9 +206,28 @@ public class VentanaGestionPersonal extends javax.swing.JFrame {
 
     private void bModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarActionPerformed
 
-        VentanaRegistroModificacionPersonal ventanaModificacion = new VentanaRegistroModificacionPersonal(this, "Modificación");
-        ventanaModificacion.setVisible(true);
-        this.setVisible(false);
+        
+        int filaSeleccionada = tablaPersonal.getSelectedRow();
+
+        if(filaSeleccionada != -1){
+
+            String idSeleccionado = (String)tablaPersonal.getModel().getValueAt(filaSeleccionada, 0);           
+                
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaJPAPU");
+            PersonalJpaController dao = new PersonalJpaController(emf);
+            
+            Personal persona = dao.findPersonal(idSeleccionado);            
+            
+            emf.close();                                    
+            
+            VentanaRegistroModificacionPersonal ventanaModificacion = new VentanaRegistroModificacionPersonal(this, "Modificación", persona);
+            ventanaModificacion.setVisible(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.ERROR_MESSAGE);
+        }        
+        
+        
 
     }//GEN-LAST:event_bModificarActionPerformed
 
@@ -218,14 +239,29 @@ public class VentanaGestionPersonal extends javax.swing.JFrame {
 
             String idSeleccionado = (String)tablaPersonal.getModel().getValueAt(filaSeleccionada, 0);
 
-            int opcion = JOptionPane.showConfirmDialog(null, "Se eliminará la persona con identificación No. " + idSeleccionado);
+            int opcion = JOptionPane.showConfirmDialog(null, "Se eliminará la persona con identificación No. " + idSeleccionado);         
 
             if(opcion == JOptionPane.YES_OPTION){
-                JOptionPane.showMessageDialog(null, "Persona con identificación No. " + idSeleccionado + " eliminada", "Eliminación realizada", JOptionPane.INFORMATION_MESSAGE);
+                
+                EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaJPAPU");
+                PersonalJpaController dao = new PersonalJpaController(emf);
+                
+                try{
+                    dao.destroy(idSeleccionado);  
+                    JOptionPane.showMessageDialog(null, "Persona con identificación No. " + idSeleccionado + " eliminada", "Eliminación realizada", JOptionPane.INFORMATION_MESSAGE);
+                    llenarTablaPersonal();
+                }catch (NonexistentEntityException ex) {
+                    System.out.println("Error al eliminar");
+                }
+                
+                emf.close();                    
+                
             }
 
-        }
-
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.ERROR_MESSAGE);
+        } 
+        
     }//GEN-LAST:event_bEliminarActionPerformed
 
     private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed

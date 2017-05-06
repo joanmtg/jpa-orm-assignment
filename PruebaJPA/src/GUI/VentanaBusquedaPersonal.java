@@ -162,10 +162,16 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
         }
         else{
             Personal persona = dao.findPersonal(numDoc);
-            tfNumeroDoc.setText("");
-            VentanaInformacionPersonal ventanaInfo = new VentanaInformacionPersonal(this, persona);
-            ventanaInfo.setVisible(true);
-            this.setVisible(false);
+            
+            if(persona != null){
+                tfNumeroDoc.setText("");
+                VentanaInformacionPersonal ventanaInfo = new VentanaInformacionPersonal(this, persona);
+                ventanaInfo.setVisible(true);
+                this.setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(null, "No existe la persona con el código ingresado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
         }
     }//GEN-LAST:event_bConsultarActionPerformed
 

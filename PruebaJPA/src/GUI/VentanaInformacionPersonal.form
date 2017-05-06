@@ -65,7 +65,7 @@
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder/>
                   </Border>
-                  <Font PropertyName="font" name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font PropertyName="font" name="DejaVu Sans Mono" size="14" style="2"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -105,7 +105,7 @@
                       <Component id="lTipoDocumento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="lNoDocumento" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
                       <Component id="bAtras" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
@@ -116,7 +116,7 @@
             <Component class="javax.swing.JLabel" name="lNombre">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="DejaVu Sans Mono" size="14" style="3"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nombre:"/>
               </Properties>
@@ -124,7 +124,7 @@
             <Component class="javax.swing.JLabel" name="lApellido">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="DejaVu Sans Mono" size="14" style="3"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Apellido:"/>
               </Properties>
@@ -132,7 +132,7 @@
             <Component class="javax.swing.JLabel" name="lTipoDocumento">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="DejaVu Sans Mono" size="14" style="3"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tipo de documento:"/>
               </Properties>
@@ -140,7 +140,7 @@
             <Component class="javax.swing.JLabel" name="lNoDocumento">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="DejaVu Sans Mono" size="14" style="3"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="No. Documento:"/>
               </Properties>
