@@ -25,10 +25,13 @@ public class VentanaInformacionPersonal extends javax.swing.JFrame {
         initComponents();        
         this.ventanaAnterior = anterior;
         
-        lNombre.setText("Nombre: " + persona.getNombre());
-        lApellido.setText("Apellido: " + persona.getApellido());
+        setLocationRelativeTo(null);
+        
+        lNombre.setText("Nombre:            " + persona.getNombre());
+        lApellido.setText("Apellido:          " + persona.getApellido());
         lTipoDocumento.setText("Tipo de Documento: " + persona.getTpDocumento().getTpCodigo());
-        lNoDocumento.setText("No. Documento: " + persona.getIdentificacionPersonal());
+        lNoDocumento.setText("No. Documento:     " + persona.getIdentificacionPersonal());
+        
         
     }
     
@@ -53,18 +56,18 @@ public class VentanaInformacionPersonal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        panelInformacion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Información del Empleado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DejaVu Sans Mono", 2, 12))); // NOI18N
+        panelInformacion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Información del Empleado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DejaVu Sans Mono", 2, 14))); // NOI18N
 
-        lNombre.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        lNombre.setFont(new java.awt.Font("DejaVu Sans Mono", 3, 14)); // NOI18N
         lNombre.setText("Nombre:");
 
-        lApellido.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        lApellido.setFont(new java.awt.Font("DejaVu Sans Mono", 3, 14)); // NOI18N
         lApellido.setText("Apellido:");
 
-        lTipoDocumento.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        lTipoDocumento.setFont(new java.awt.Font("DejaVu Sans Mono", 3, 14)); // NOI18N
         lTipoDocumento.setText("Tipo de documento:");
 
-        lNoDocumento.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        lNoDocumento.setFont(new java.awt.Font("DejaVu Sans Mono", 3, 14)); // NOI18N
         lNoDocumento.setText("No. Documento:");
 
         bAtras.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
@@ -104,7 +107,7 @@ public class VentanaInformacionPersonal extends javax.swing.JFrame {
                 .addComponent(lTipoDocumento)
                 .addGap(30, 30, 30)
                 .addComponent(lNoDocumento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(bAtras)
                 .addGap(28, 28, 28))
         );

@@ -28,16 +28,28 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
      */
     JFrame ventanaAnterior;
     String operacion;
+    Personal persona;
     Validaciones validador = new Validaciones();
 
-    public VentanaRegistroModificacionPersonal(JFrame anterior, String operacion) {
+    public VentanaRegistroModificacionPersonal(JFrame anterior, String operacion, Personal persona) {
         super(operacion + " de personal");
         initComponents();
 
         this.ventanaAnterior = anterior;
         this.operacion = operacion;
+        this.persona = persona;
         setLocationRelativeTo(null);
         llenarCBTipoDoc();
+        
+        if(operacion.equals("Modificación")){
+                        
+            tfNombre.setText(persona.getNombre());
+            tfApellido.setText(persona.getApellido());            
+            cbTipoDoc.setSelectedItem(persona.getTpDocumento().getTpCodigo());            
+            tfNumDoc.setText(persona.getIdentificacionPersonal());
+            cbTipoDoc.setEnabled(false);
+            tfNumDoc.setEnabled(false);            
+        }
         
     }
 
@@ -208,15 +220,12 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAtrasActionPerformed
-
-        int opcion = JOptionPane.showConfirmDialog(null, "¿Desea cancelar la operación actual?");
-
-        if (opcion == JOptionPane.YES_OPTION) {
-            this.dispose();
-            ventanaAnterior.setVisible(true);
-        }
-
-
+        
+        this.dispose();        
+        VentanaGestionPersonal vGestion = (VentanaGestionPersonal)ventanaAnterior;
+        vGestion.setVisible(true);
+        vGestion.llenarTablaPersonal();        
+        
     }//GEN-LAST:event_bAtrasActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
@@ -235,34 +244,38 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
             String nombre = tfNombre.getText();
             String apellido = tfApellido.getText();
             String NoId = tfNumDoc.getText();
-            int opcion = cbTipoDoc.getSelectedIndex();
-            String tipoId;
-            if (opcion != 0) {
-                try {
-                    tipoId = cbTipoDoc.getSelectedItem().toString();
-                    Personal persona = new Personal();
-                    persona.setNombre(nombre);
-                    persona.setApellido(apellido);
-                    persona.setIdentificacionPersonal(tfNumDoc.getText());
-                    persona.setTpDocumento(tpdoc.findTipoDocumento(opcion));//Buscamos el tipo documento con primary key = 1 (C.C.) y se lo pasamos al objeto personal
+            int indexTipoDoc = cbTipoDoc.getSelectedIndex();
+            
+            if (indexTipoDoc != 0) {
+                try {                                       
                     
                     switch(operacion){
-                        case "crear":
+                        case "Registro":
+                            persona = new Personal();
+                            persona.setNombre(nombre);
+                            persona.setApellido(apellido);
+                            persona.setIdentificacionPersonal(tfNumDoc.getText());
+                            persona.setTpDocumento(tpdoc.findTipoDocumento(indexTipoDoc+1));//Buscamos el tipo documento con primary key = 1 (C.C.) y se lo pasamos al objeto personal
                             dao.create(persona);
+                            JOptionPane.showMessageDialog(null, "Registro realizado exitosamente", "Registro", JOptionPane.INFORMATION_MESSAGE);                            
                             break;
-                        case "modificar":
+                        case "Modificación":
+                            persona.setNombre(nombre);
+                            persona.setApellido(apellido);                                
                             dao.edit(persona);
+                            JOptionPane.showMessageDialog(null, "Modificación realizada exitosamente", "Modificación", JOptionPane.INFORMATION_MESSAGE);                            
+                            bAtras.doClick();
                             break;
                         default:
                             break;
-                    }
+                    }                    
                     
-                    
-                    JOptionPane.showMessageDialog(null, "Registro exitoso");
                     //Se deja todo limpio
-                    limpiarTf();
+                    limpiarCampos();                    
+                    
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Ya existe esta persona");
+                    JOptionPane.showMessageDialog(null, "Ya existe una persona con el No. de ID ingresado", "Error", JOptionPane.ERROR_MESSAGE
+                    );
                 }
                     
                 
@@ -309,7 +322,7 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
         
     }
     
-    public void limpiarTf(){
+    public void limpiarCampos(){
         tfApellido.setText("");
         tfNombre.setText("");
         tfNumDoc.setText("");
@@ -354,7 +367,7 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaRegistroModificacionPersonal(null, null).setVisible(true);
+                new VentanaRegistroModificacionPersonal(null, null, null).setVisible(true);
             }
         });
     }
