@@ -5,7 +5,13 @@
  */
 package GUI;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import pruebajpa.Personal;
+import pruebajpa.PersonalJpaController;
+import pruebajpa.Validaciones;
 
 /**
  *
@@ -18,7 +24,7 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
      */
     
     JFrame ventanaAnterior;
-        
+    Validaciones validador = new Validaciones();
     public VentanaBusquedaPersonal(JFrame anterior) {        
         super("Búsqueda por ID");
         initComponents();
@@ -50,8 +56,19 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
         lNumDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         lNumDoc.setText("Número de Documento:");
 
+        tfNumeroDoc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNumeroDocKeyTyped(evt);
+            }
+        });
+
         bConsultar.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         bConsultar.setText("Consultar");
+        bConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultarActionPerformed(evt);
+            }
+        });
 
         bAtras.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         bAtras.setText("Atrás");
@@ -132,6 +149,31 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
         ventanaAnterior.setVisible(true);
         
     }//GEN-LAST:event_bAtrasActionPerformed
+
+    private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
+        // TODO add your handling code here:
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaJPAPU");//PruebaJPAPU es el nombre de nuestra unidad de persistencia
+        PersonalJpaController dao = new PersonalJpaController(emf);//Creamos un controlador de personal
+        
+        String numDoc = tfNumeroDoc.getText().trim();
+        
+        if(numDoc.equals("")){
+            JOptionPane.showMessageDialog(null, "No deje el campo vacío");
+        }
+        else{
+            Personal persona = dao.findPersonal(numDoc);
+            tfNumeroDoc.setText("");
+            VentanaInformacionPersonal ventanaInfo = new VentanaInformacionPersonal(this, persona);
+            ventanaInfo.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_bConsultarActionPerformed
+
+    private void tfNumeroDocKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNumeroDocKeyTyped
+        // TODO add your handling code here:
+        validador.validarNumeros(evt);
+        validador.validarTamano(tfNumeroDoc, evt, 10);
+    }//GEN-LAST:event_tfNumeroDocKeyTyped
 
     /**
      * @param args the command line arguments

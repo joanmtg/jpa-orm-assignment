@@ -15,6 +15,7 @@ import pruebajpa.Personal;
 import pruebajpa.PersonalJpaController;
 import pruebajpa.TipoDocumento;
 import pruebajpa.TipoDocumentoJpaController;
+import pruebajpa.Validaciones;
 
 /**
  *
@@ -27,6 +28,7 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
      */
     JFrame ventanaAnterior;
     String operacion;
+    Validaciones validador = new Validaciones();
 
     public VentanaRegistroModificacionPersonal(JFrame anterior, String operacion) {
         super(operacion + " de personal");
@@ -75,8 +77,18 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
         jLabel3.setText("Tipo de documento:");
 
         tfNombre.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        tfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNombreKeyTyped(evt);
+            }
+        });
 
         tfApellido.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        tfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfApellidoKeyTyped(evt);
+            }
+        });
 
         cbTipoDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         cbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
@@ -85,6 +97,11 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
         jLabel4.setText("No. Documento:");
 
         tfNumDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        tfNumDoc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNumDocKeyTyped(evt);
+            }
+        });
 
         bAceptar.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
         bAceptar.setText("Aceptar");
@@ -221,18 +238,34 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
             int opcion = cbTipoDoc.getSelectedIndex();
             String tipoId;
             if (opcion != 0) {
-                tipoId = cbTipoDoc.getSelectedItem().toString();
-                Personal persona = new Personal();
-                persona.setNombre(nombre);
-                persona.setApellido(apellido);
-                persona.setIdentificacionPersonal(tfNumDoc.getText());
-                persona.setTpDocumento(tpdoc.findTipoDocumento(opcion));//Buscamos el tipo documento con primary key = 1 (C.C.) y se lo pasamos al objeto personal
                 try {
-                    dao.create(persona);
+                    tipoId = cbTipoDoc.getSelectedItem().toString();
+                    Personal persona = new Personal();
+                    persona.setNombre(nombre);
+                    persona.setApellido(apellido);
+                    persona.setIdentificacionPersonal(tfNumDoc.getText());
+                    persona.setTpDocumento(tpdoc.findTipoDocumento(opcion));//Buscamos el tipo documento con primary key = 1 (C.C.) y se lo pasamos al objeto personal
+                    
+                    switch(operacion){
+                        case "crear":
+                            dao.create(persona);
+                            break;
+                        case "modificar":
+                            dao.edit(persona);
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                    
                     JOptionPane.showMessageDialog(null, "Registro exitoso");
+                    //Se deja todo limpio
+                    limpiarTf();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Ya existe esta persona");
                 }
+                    
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un tipo de documento");
             }
@@ -242,7 +275,29 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_bAceptarActionPerformed
 
+    private void tfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNombreKeyTyped
+        // TODO add your handling code here:
+        validador.validarLetras(evt);
+        validador.validarTamano(tfNombre, evt, 20);
+    }//GEN-LAST:event_tfNombreKeyTyped
+
+    private void tfApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfApellidoKeyTyped
+        // TODO add your handling code here:
+        validador.validarLetras(evt);
+        validador.validarTamano(tfApellido, evt, 20);
+    }//GEN-LAST:event_tfApellidoKeyTyped
+
+    private void tfNumDocKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNumDocKeyTyped
+        // TODO add your handling code here:
+        validador.validarNumeros(evt);
+        validador.validarTamano(tfNumDoc, evt, 10);
+    }//GEN-LAST:event_tfNumDocKeyTyped
+
     public void llenarCBTipoDoc(){
+        cbTipoDoc.removeAllItems();
+        cbTipoDoc.addItem("Seleccione");
+                
+                
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PruebaJPAPU");//PruebaJPAPU es el nombre de nuestra unidad de persistencia
         TipoDocumentoJpaController tpdoc = new TipoDocumentoJpaController(emf);//Debido a que Tipo documento es una Foreing Key en Personal, debemos instanciar un controlador
         //de tipo TipoDocumento
@@ -252,6 +307,13 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
             cbTipoDoc.addItem(tiposDeDocumentos.get(i).getTpCodigo().toString());
         }
         
+    }
+    
+    public void limpiarTf(){
+        tfApellido.setText("");
+        tfNombre.setText("");
+        tfNumDoc.setText("");
+        llenarCBTipoDoc();
     }
     
     
