@@ -51,18 +51,19 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelInterno.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Búsqueda de Personal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DejaVu Sans Mono", 2, 12))); // NOI18N
+        panelInterno.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Búsqueda de Personal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Lato", 0, 16))); // NOI18N
 
-        lNumDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        lNumDoc.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         lNumDoc.setText("Número de Documento:");
 
+        tfNumeroDoc.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         tfNumeroDoc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfNumeroDocKeyTyped(evt);
             }
         });
 
-        bConsultar.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        bConsultar.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         bConsultar.setText("Consultar");
         bConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +71,7 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
             }
         });
 
-        bAtras.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        bAtras.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         bAtras.setText("Atrás");
         bAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +95,7 @@ public class VentanaBusquedaPersonal extends javax.swing.JFrame {
                 .addGroup(panelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bConsultar)
                     .addComponent(tfNumeroDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         panelInternoLayout.setVerticalGroup(
             panelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

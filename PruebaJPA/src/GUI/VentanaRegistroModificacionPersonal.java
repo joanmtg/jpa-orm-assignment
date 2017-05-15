@@ -77,45 +77,45 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelIngreso.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Ingrese los datos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DejaVu Sans Mono", 2, 12))); // NOI18N
+        panelIngreso.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Ingrese los datos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Lato", 0, 16))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel1.setText("Nombre:");
 
-        jLabel2.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel2.setText("Apellido:");
 
-        jLabel3.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel3.setText("Tipo de documento:");
 
-        tfNombre.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        tfNombre.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         tfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfNombreKeyTyped(evt);
             }
         });
 
-        tfApellido.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        tfApellido.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         tfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfApellidoKeyTyped(evt);
             }
         });
 
-        cbTipoDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        cbTipoDoc.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         cbTipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
 
-        jLabel4.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         jLabel4.setText("No. Documento:");
 
-        tfNumDoc.setFont(new java.awt.Font("DejaVu Sans Mono", 0, 12)); // NOI18N
+        tfNumDoc.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         tfNumDoc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfNumDocKeyTyped(evt);
             }
         });
 
-        bAceptar.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        bAceptar.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         bAceptar.setText("Aceptar");
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +123,7 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
             }
         });
 
-        bAtras.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        bAtras.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         bAtras.setText("Atrás");
         bAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +160,7 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
                             .addGroup(panelIngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cbTipoDoc, 0, 131, Short.MAX_VALUE)
                                 .addComponent(tfNumDoc)))))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         panelIngresoLayout.setVerticalGroup(
             panelIngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +181,7 @@ public class VentanaRegistroModificacionPersonal extends javax.swing.JFrame {
                 .addGroup(panelIngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(tfNumDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(panelIngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAtras)
                     .addComponent(bAceptar))
