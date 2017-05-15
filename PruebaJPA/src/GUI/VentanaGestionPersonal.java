@@ -79,9 +79,9 @@ public class VentanaGestionPersonal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelGestion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Gestión de Personal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DejaVu Sans Mono", 2, 12))); // NOI18N
+        panelGestion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Gestión de Personal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Lato", 0, 16))); // NOI18N
 
-        bRegistrar.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        bRegistrar.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         bRegistrar.setText("Registrar");
         bRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +89,7 @@ public class VentanaGestionPersonal extends javax.swing.JFrame {
             }
         });
 
-        bModificar.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        bModificar.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         bModificar.setText("Modificar");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +97,7 @@ public class VentanaGestionPersonal extends javax.swing.JFrame {
             }
         });
 
-        bEliminar.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        bEliminar.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         bEliminar.setText("Eliminar");
         bEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +105,7 @@ public class VentanaGestionPersonal extends javax.swing.JFrame {
             }
         });
 
-        bConsultar.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        bConsultar.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         bConsultar.setText("Consultar");
         bConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +113,7 @@ public class VentanaGestionPersonal extends javax.swing.JFrame {
             }
         });
 
-        tablaPersonal.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        tablaPersonal.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         tablaPersonal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -141,9 +141,9 @@ public class VentanaGestionPersonal extends javax.swing.JFrame {
                 .addGroup(panelGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelGestionLayout.createSequentialGroup()
                         .addComponent(bRegistrar)
-                        .addGap(37, 37, 37)
+                        .addGap(41, 41, 41)
                         .addComponent(bModificar)
-                        .addGap(38, 38, 38)
+                        .addGap(42, 42, 42)
                         .addComponent(bEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bConsultar))

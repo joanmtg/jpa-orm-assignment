@@ -56,21 +56,21 @@ public class VentanaInformacionPersonal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        panelInformacion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Información del Empleado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DejaVu Sans Mono", 2, 14))); // NOI18N
+        panelInformacion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Información del Empleado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Lato", 0, 16))); // NOI18N
 
-        lNombre.setFont(new java.awt.Font("DejaVu Sans Mono", 3, 14)); // NOI18N
+        lNombre.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         lNombre.setText("Nombre:");
 
-        lApellido.setFont(new java.awt.Font("DejaVu Sans Mono", 3, 14)); // NOI18N
+        lApellido.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         lApellido.setText("Apellido:");
 
-        lTipoDocumento.setFont(new java.awt.Font("DejaVu Sans Mono", 3, 14)); // NOI18N
+        lTipoDocumento.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         lTipoDocumento.setText("Tipo de documento:");
 
-        lNoDocumento.setFont(new java.awt.Font("DejaVu Sans Mono", 3, 14)); // NOI18N
+        lNoDocumento.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         lNoDocumento.setText("No. Documento:");
 
-        bAtras.setFont(new java.awt.Font("DejaVu Sans Mono", 2, 12)); // NOI18N
+        bAtras.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
         bAtras.setText("Atrás");
         bAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +107,7 @@ public class VentanaInformacionPersonal extends javax.swing.JFrame {
                 .addComponent(lTipoDocumento)
                 .addGap(30, 30, 30)
                 .addComponent(lNoDocumento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(bAtras)
                 .addGap(28, 28, 28))
         );

@@ -67,7 +67,7 @@
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder/>
                   </Border>
-                  <Font PropertyName="font" name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font PropertyName="font" name="Lato" size="16" style="0"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -92,7 +92,7 @@
                           <Component id="bConsultar" min="-2" max="-2" attributes="0"/>
                           <Component id="tfNumeroDoc" min="-2" pref="140" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -118,12 +118,17 @@
             <Component class="javax.swing.JLabel" name="lNumDoc">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="N&#xfa;mero de Documento:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfNumeroDoc">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lato" size="14" style="0"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfNumeroDocKeyTyped"/>
               </Events>
@@ -131,7 +136,7 @@
             <Component class="javax.swing.JButton" name="bConsultar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
@@ -142,7 +147,7 @@
             <Component class="javax.swing.JButton" name="bAtras">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
               </Properties>

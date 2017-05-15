@@ -64,7 +64,7 @@
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder/>
                   </Border>
-                  <Font PropertyName="font" name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font PropertyName="font" name="Lato" size="16" style="0"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -107,7 +107,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="112" max="32767" attributes="0"/>
+                      <EmptySpace pref="104" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -134,7 +134,7 @@
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfNumDoc" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="39" max="32767" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="bAtras" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -148,7 +148,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nombre:"/>
               </Properties>
@@ -156,7 +156,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Apellido:"/>
               </Properties>
@@ -164,7 +164,7 @@
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tipo de documento:"/>
               </Properties>
@@ -172,7 +172,7 @@
             <Component class="javax.swing.JTextField" name="tfNombre">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="0"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -182,7 +182,7 @@
             <Component class="javax.swing.JTextField" name="tfApellido">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="0"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -192,7 +192,7 @@
             <Component class="javax.swing.JComboBox" name="cbTipoDoc">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
@@ -207,7 +207,7 @@
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="No. Documento:"/>
               </Properties>
@@ -215,7 +215,7 @@
             <Component class="javax.swing.JTextField" name="tfNumDoc">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="0"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -225,7 +225,7 @@
             <Component class="javax.swing.JButton" name="bAceptar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Aceptar"/>
               </Properties>
@@ -236,7 +236,7 @@
             <Component class="javax.swing.JButton" name="bAtras">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="DejaVu Sans Mono" size="12" style="2"/>
+                  <Font name="Lato" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
               </Properties>
